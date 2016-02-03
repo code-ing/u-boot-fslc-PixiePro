@@ -1,0 +1,12 @@
+if TARGET_PIXIEPRO
+
+config SYS_BOARD
+	default "pixiepro"
+
+config SYS_SOC
+	default "mx6"
+
+config SYS_CONFIG_NAME
+	default "pixiepro"
+
+endif

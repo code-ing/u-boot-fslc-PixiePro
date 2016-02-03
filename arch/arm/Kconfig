@@ -474,6 +474,12 @@ config TARGET_MX51_EFIKAMX
 	bool "Support mx51_efikamx"
 	select CPU_V7
 
+config TARGET_PIXIEPRO
+	bool "Support pixiepro"
+	select CPU_V7
+	select DM
+    select DM_THERMAL
+
 config TARGET_VISION2
 	bool "Support vision2"
 	select CPU_V7
@@ -860,6 +866,7 @@ source "board/palmld/Kconfig"
 source "board/palmtc/Kconfig"
 source "board/palmtreo680/Kconfig"
 source "board/phytec/pcm051/Kconfig"
+source "board/pixiepro/Kconfig"
 source "board/ppcag/bg0900/Kconfig"
 source "board/pxa255_idp/Kconfig"
 source "board/samsung/smdk2410/Kconfig"
