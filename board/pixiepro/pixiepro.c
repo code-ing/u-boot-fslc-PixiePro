@@ -455,12 +455,15 @@ int board_init(void)
 	setup_i2c(1, CONFIG_SYS_I2C_SPEED, 0x7f, &i2c_pad_info1);
 	/* I2C 3 Steer */
 	gpio_direction_output(IMX_GPIO_NR(4, 10), 0);
+	udelay(100000);
 
-#ifndef CONFIG_SYS_FLASH_CFI
+	#ifndef CONFIG_SYS_FLASH_CFI
 	setup_i2c(2, CONFIG_SYS_I2C_SPEED, 0x7f, &i2c_pad_info2);
-#endif
+	#endif
+
+	udelay(50000);
 	gpio_direction_output(IMX_GPIO_NR(4, 10), 1);
-	
+
 	return 0;
 }
 
