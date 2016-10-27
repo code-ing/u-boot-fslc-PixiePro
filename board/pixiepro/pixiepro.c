@@ -499,6 +499,9 @@ int power_init_board(void)
 {
 	struct pmic *p;
 	unsigned int ret;
+	unsigned int reg;
+
+	int SW3x_135V = 38;
 
 	p = pfuze_common_init(I2C_PMIC);
 	if (!p)
@@ -507,6 +510,17 @@ int power_init_board(void)
 	ret = pfuze_mode_init(p, APS_PFM);
 	if (ret < 0)
 		return ret;
+
+	pmic_reg_read(p, PFUZE100_SW3AVOL, &reg);
+	reg &= ~SW1x_NORMAL_MASK;
+	reg |= SW3x_135V;
+	pmic_reg_write(p, PFUZE100_SW3AVOL, reg);
+
+	pmic_reg_read(p, PFUZE100_SW3BVOL, &reg);
+	reg &= ~SW1x_NORMAL_MASK;
+	reg |= SW3x_135V;
+	pmic_reg_write(p, PFUZE100_SW3BVOL, reg);
+
 
 	return 0;
 }
